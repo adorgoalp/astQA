@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="@dimen/standard_8">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary">
+
+
+        <TextView
+            android:id="@+id/tvCategory"
+            style="@style/tvStyleNoCategory"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_weight="1"
+            android:text="বিতর বিতর বিতর" />
+        <TextView
+            android:id="@+id/tvNo"
+            style="@style/tvStyleNoCategory"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_alignBottom="@id/tvCategory"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:text="105" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tvQuestion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/questionColor"
+        android:padding="@dimen/standard_8"
+        android:text="আসসালামু আলাইকুম  হুন্ডি ব্যবসা কি শরীয়ত সম্মত ? বিস্তারিত জানালে উপকৃত হবো।  আল্লাহ হাফেজ"
+        android:textColor="@color/black" />
+
+    <TextView
+        android:id="@+id/tvAnswer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/answerColor"
+        android:padding="@dimen/standard_8"
+        android:text="উত্তর: ওয়া আলাইকুমুস সালাম। আমরা যতদূর জানতে পেরেছে হু্ন্ডি হলো সরকারী ট্যাক্স ফাঁকি দিয়ে অর্থ লেনদেনের একটি ব্যবস্থা। সরকারকে ফাঁকি দেয়ার কারণে এটা জায়েজ হবে না।"
+        android:textColor="@color/black" />
+</LinearLayout>
