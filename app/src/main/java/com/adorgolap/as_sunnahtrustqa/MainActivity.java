@@ -2,6 +2,7 @@ package com.adorgolap.as_sunnahtrustqa;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -161,6 +162,8 @@ public class MainActivity extends AppCompatActivity {
             case R.id.actionUpdateDatabase:
                 return true;
             case R.id.actionAbout:
+                Intent intent = new Intent(MainActivity.this,AboutActivity.class);
+                startActivity(intent);
                 return true;
             case R.id.actionRateUs:
                 return true;
