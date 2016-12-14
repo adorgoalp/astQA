@@ -33,49 +33,71 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<String> categories;
     ArrayList<QA> listData;
     ListView lv;
+    boolean isCategoryLoaded = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         context = this;
         lv = (ListView) findViewById(R.id.lvMain);
-        handleDatabase();
+        handleDataLaoding("All");
         handleToolbar();
-//        handleFab();
-
     }
 
-    private void handleOnScreenListViewData(String category) {
-        listData = dbHelper.getAllQA(category);
+    private void handleOnScreenListViewData() {
         MainListViewAdapter adapter = new MainListViewAdapter(context,0,listData);
         lv.setAdapter(adapter);
     }
 
-    private void handleDatabase() {
+    private void handleDataLaoding(String category) {
         DataHndlerTask task = new DataHndlerTask();
-        task.execute();
+        task.execute(category);
     }
 
-    class DataHndlerTask extends AsyncTask<Void,Void,Void>
+    class DataHndlerTask extends AsyncTask<String,Void,Void>
     {
+        private void loadQA(String category) {
+            listData = dbHelper.getAllQA(category);
+        }
+        private void loadCategory()
+        {
+            while (!dbHelper.isReady())
+            {
+                try {
+                    Thread.sleep(250);
+                }catch (InterruptedException ex)
+                {
+                    ex.printStackTrace();
+                }
+            }
+            if(dbHelper.isReady()) {
+                categories = dbHelper.getAllCategory();
+            }
+        }
         ProgressDialog progress;
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
             progress = new ProgressDialog(context);
             progress.setTitle("Please wait");
-            progress.setMessage("Preparing database...");
+            progress.setMessage("Loading...");
             progress.setProgressStyle(ProgressDialog.STYLE_SPINNER);
             progress.setCancelable(false);
             progress.show();
         }
 
         @Override
-        protected Void doInBackground(Void... voids) {
+        protected Void doInBackground(String... params) {
+            String category = params[0];
             dbHelper = new DatabaseHelper(context);
             try {
                 dbHelper.createDataBase();
                 dbHelper.openDataBase();
+                if(!isCategoryLoaded) {
+                    loadCategory();
+                    isCategoryLoaded = true;
+                }
+                loadQA(category);
             }catch (IOException e)
             {
                 e.printStackTrace();
@@ -83,12 +105,13 @@ public class MainActivity extends AppCompatActivity {
             return null;
         }
 
+
         @Override
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
             progress.dismiss();
             handleNavigationDrawer();
-            handleOnScreenListViewData("All");
+            handleOnScreenListViewData();
         }
     }
 
@@ -102,26 +125,13 @@ public class MainActivity extends AppCompatActivity {
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         ListView lv = (ListView) navigationView.findViewById(R.id.lvNavBar);
-        while (!dbHelper.isReady())
-        {
-            try {
-                Thread.sleep(250);
-            }catch (InterruptedException ex)
-            {
-                ex.printStackTrace();
-            }
-        }
-        if(dbHelper.isReady())
-        {
-            categories= dbHelper.getAllCategory();
-            ArrayAdapter<String> adpter = new ArrayAdapter<String>(context, android.R.layout.simple_list_item_1,categories);
-            lv.setAdapter(adpter);
-        }
+        ArrayAdapter<String> adpter = new ArrayAdapter<String>(context, android.R.layout.simple_list_item_1,categories);
+        lv.setAdapter(adpter);
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int positon, long id) {
                 Toast.makeText(context,categories.get(positon),Toast.LENGTH_SHORT).show();
-                handleOnScreenListViewData(categories.get(positon));
+                handleDataLaoding(categories.get(positon));
                 drawer.closeDrawer(Gravity.LEFT);
             }
         });
