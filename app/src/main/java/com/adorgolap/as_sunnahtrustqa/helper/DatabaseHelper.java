@@ -1,4 +1,4 @@
-package com.adorgolap.as_sunnahtrustqa;
+package com.adorgolap.as_sunnahtrustqa.helper;
 
 import android.content.Context;
 import android.database.Cursor;
@@ -6,6 +6,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
+
+import com.adorgolap.as_sunnahtrustqa.model.QA;
 
 import java.io.File;
 import java.io.FileOutputStream;

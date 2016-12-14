@@ -1,4 +1,4 @@
-package com.adorgolap.as_sunnahtrustqa;
+package com.adorgolap.as_sunnahtrustqa.model;
 
 /**
  * Created by ifta on 12/3/16.

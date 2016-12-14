@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import com.adorgolap.as_sunnahtrustqa.QA;
+import com.adorgolap.as_sunnahtrustqa.model.QA;
 import com.adorgolap.as_sunnahtrustqa.R;
 
 import java.util.ArrayList;

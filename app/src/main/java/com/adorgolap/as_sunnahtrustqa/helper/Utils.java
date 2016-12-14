@@ -1,4 +1,4 @@
-package com.adorgolap.as_sunnahtrustqa;
+package com.adorgolap.as_sunnahtrustqa.helper;
 
 import android.content.Context;
 
