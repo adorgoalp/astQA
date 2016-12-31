@@ -12,14 +12,11 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+    <ImageView
         android:id="@+id/profile_image"
         android:layout_width="64dp"
         android:layout_height="64dp"
-        android:src="@drawable/ajsirrh"
-        app:civ_border_width="2dp"
-        app:civ_border_color="#FF000000"/>
+        android:src="@drawable/ast_logo" />
 
     <TextView
         android:layout_width="match_parent"

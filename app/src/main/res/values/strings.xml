@@ -1,14 +1,23 @@
 <resources>
-    <string name="app_name">As-sunnah Trust QA</string>
+    <string name="app_name">As-Sunnah Trust QA</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
     <string name="action_sync">Sync</string>
-    <string name="action_about">About</string>
+    <string name="action_about">About Us</string>
+    <string name="action_help">Help</string>
     <string name="action_rate">Rate Us</string>
 
+    <string name="aboutAppData">এই অ্যাপের সমস্ত তথ্যাদি নিম্নোক্ত ওয়েব সাইট থেকে নেয়া\n
+    http://assunnahtrust.com/wps/ \n\nঅ্যাপ ডেভেলপারের আস সুন্নাহ ট্রাস্ট এর মেইন ডাটাবেসের এক্সেস নাই। তাই এই অ্যাপ থেকে সরাসরি প্রশ্ন করার কোন সুযোগ নাই।
+    \n\nএকই কারণে ওয়েব সাইটে কোন প্রশ্নোত্তর প্রকাশের পর সেটা অ্যাপএ সাথে সাথে পাওয়া নাও যেতে পারে।
+    \n\nঅ্যাপ ডেভেলপার মাঝে মাঝে এই অ্যাপ এর গ্লোবাল ডাটাবেস উপরোক্ত ওয়েব সাইট থেকে ডাটা নিয়ে আপডেট দিবেন। আপনার অপশন মেনুর Sync অপশন দ্বারা
+    অ্যাপের ডাটাবেস আপডেট করতে পারবেন ইনশা আল্লাহ।\n\nমূল ওয়েব সাইটে প্রশ্নের নম্বর ঠিক মত না থাকায় অ্যাপ এর প্রশ্নের নম্বর ও মূল সাইটের প্রশ্নের উত্তরের
+        সামঞ্জস্য রাখা সম্ভব হয়নি বলে আন্তরিক ভাবে দুঃখিত।\n\nRate Us অপশনটিতে গিয়ে অ্যাপটির রেটিং দিতে পারেন এবং অ্যাপটি
+        সম্পর্কে আপনার মূল্যবান মতামত জানাতে পারেন। আপনাদের মতামত পেলে ভবিষ্যতে অ্যাপটির মান উন্নয়নে সুবিধা হবে।\n\nকোন প্রশ্নোত্তর শেয়ার করতে চাইলে প্রশ্নোত্তরটি প্রেস করে ধরে রাখুন। শেয়ার অপশন দেখালে শেয়ার করুন।
+    \n\nঅ্যাপটি সবার সাথে শেয়ার করতে ভুলবেন না।</string>
 
     <string name="assunahTrust">আস সুন্নাহ ট্রাস্ট</string>
     <string name="assunahTrusstMoto">সুনাতে উদ্ভাসিত জীবনের জন্য</string>

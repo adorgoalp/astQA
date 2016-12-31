@@ -13,6 +13,11 @@
         android:title="@string/action_about"
         app:showAsAction="never" />
     <item
+        android:id="@+id/actionHelp"
+        android:orderInCategory="100"
+        android:title="@string/action_help"
+        app:showAsAction="never" />
+    <item
         android:id="@+id/actionRateUs"
         android:orderInCategory="100"
         android:title="@string/action_rate"

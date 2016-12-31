@@ -1,5 +1,6 @@
-package com.adorgolap.as_sunnahtrustqa.helper;
+package com.adorgolap.assunnahtrustqa.helper;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -7,7 +8,7 @@ import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-import com.adorgolap.as_sunnahtrustqa.model.QA;
+import com.adorgolap.assunnahtrustqa.model.QA;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -118,7 +119,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         //Open the database
         String myPath = DB_PATH + DB_NAME;
-        myDataBase = SQLiteDatabase.openDatabase(myPath, null, SQLiteDatabase.OPEN_READONLY);
+        myDataBase = SQLiteDatabase.openDatabase(myPath, null, SQLiteDatabase.OPEN_READWRITE);
 
     }
 
@@ -217,6 +218,44 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             e.printStackTrace();
         }
         return categories;
+    }
+
+    public int getMaxQAid() {
+        String sql = "SELECT MAX("+DBC.ID+") FROM "+DBC.TABLE_NAME;
+        try {
+            Cursor c = myDataBase.rawQuery(sql,null);
+            if(c!= null)
+            {
+                c.moveToFirst();
+                return c.getInt(0);
+            }
+        }catch (SQLiteException e)
+        {
+            e.printStackTrace();
+        }
+        return -1;
+    }
+    public void insertAll(ArrayList<QA> result) {
+        if(result == null)
+        {
+            System.err.println("Null result");
+            return;
+        }
+        for(int i = 0 ; i < result.size() ; i++)
+        {
+            QA qa = result.get(i);
+            insert(qa.getId(),qa.getQuestion(),qa.getAnswer(),qa.getCategory());
+        }
+    }
+
+    private void insert(int questionId, String question, String answer, String category) {
+        String sql = "INSERT INTO "+DBC.TABLE_NAME+" (qaId,question,answer,category) VALUES(?,?,?,?)";
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(DBC.ID,questionId);
+        contentValues.put(DBC.QUESTION,question);
+        contentValues.put(DBC.ANSWER,answer);
+        contentValues.put(DBC.CATEGORY,category);
+        myDataBase.insert(DBC.TABLE_NAME,null,contentValues);
     }
     class DBC {
         public static final String TABLE_NAME = "QA_TABLE";

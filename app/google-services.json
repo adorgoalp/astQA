@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "262869233032",
+    "firebase_url": "https://as-sunnahtrustqa.firebaseio.com",
+    "project_id": "as-sunnahtrustqa",
+    "storage_bucket": "as-sunnahtrustqa.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:262869233032:android:dcd96ee6185e09f1",
+        "android_client_info": {
+          "package_name": "com.adorgolap.as_sunnahtrustqa"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "262869233032-jjdprpemkta6gbvhgam86eps97tlk3c7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.adorgolap.as_sunnahtrustqa",
+            "certificate_hash": "83FFC58027474DE044CA5BA11D7E1E99AD97A498"
+          }
+        },
+        {
+          "client_id": "262869233032-lats6kcq54sv31idv5hdavv9mmr4n6o0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB4N2ybBVbCjA6TV4f4wwXb6l5LJs3zUa8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "262869233032-lats6kcq54sv31idv5hdavv9mmr4n6o0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

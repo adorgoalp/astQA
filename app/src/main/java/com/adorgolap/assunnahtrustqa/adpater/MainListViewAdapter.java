@@ -1,7 +1,8 @@
-package com.adorgolap.as_sunnahtrustqa.adpater;
+package com.adorgolap.assunnahtrustqa.adpater;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,7 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import com.adorgolap.as_sunnahtrustqa.model.QA;
+import com.adorgolap.assunnahtrustqa.model.QA;
 import com.adorgolap.as_sunnahtrustqa.R;
 
 import java.util.ArrayList;
@@ -21,6 +22,7 @@ import java.util.ArrayList;
 public class MainListViewAdapter extends ArrayAdapter<QA>{
     Context context;
     LayoutInflater inflater;
+    final String Q = "প্রশ্ন: ";
     public MainListViewAdapter(Context context, int resource, ArrayList<QA> data) {
         super(context, resource, data);
         this.context = context;
@@ -31,7 +33,7 @@ public class MainListViewAdapter extends ArrayAdapter<QA>{
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View view = convertView;
-        QAHolder holder;
+        final QAHolder holder;
         if(convertView == null)
         {
             view = inflater.inflate(R.layout.main_list_single_item,null);
@@ -44,11 +46,35 @@ public class MainListViewAdapter extends ArrayAdapter<QA>{
         }else {
             holder = (QAHolder) view.getTag();
         }
-        QA qa = getItem(position);
+        final QA qa = getItem(position);
         holder.tvNo.setText(qa.getId()+"");
         holder.tvCategory.setText(qa.getCategory());
         holder.tvQuestion.setText(qa.getQuestion());
         holder.tvAnswer.setText(qa.getAnswer());
+        holder.tvAnswer.setVisibility(View.GONE);
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(holder.tvAnswer.getVisibility() == View.GONE)
+                {
+                    holder.tvAnswer.setVisibility(View.VISIBLE);
+                }else {
+                    holder.tvAnswer.setVisibility(View.GONE);
+                }
+            }
+        });
+        view.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                String data = Q + qa.getQuestion()+"\n\n"+qa.getAnswer();
+                Intent sendIntent = new Intent();
+                sendIntent.setAction(Intent.ACTION_SEND);
+                sendIntent.putExtra(Intent.EXTRA_TEXT, data);
+                sendIntent.setType("text/plain");
+                context.startActivity(Intent.createChooser(sendIntent, "Share"));
+                return true;
+            }
+        });
         return view;
     }
     class QAHolder{

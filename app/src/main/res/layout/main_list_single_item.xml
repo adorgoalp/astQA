@@ -11,24 +11,28 @@
         android:background="@color/colorPrimary">
 
 
+
+        <TextView
+            android:id="@+id/tvNo"
+            style="@style/tvStyleNoCategory"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:text="105" />
         <TextView
             android:id="@+id/tvCategory"
             style="@style/tvStyleNoCategory"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
+            android:layout_alignBottom="@id/tvNo"
             android:layout_alignParentRight="true"
-            android:layout_weight="1"
-            android:text="বিতর বিতর বিতর" />
-        <TextView
-            android:id="@+id/tvNo"
-            style="@style/tvStyleNoCategory"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_alignBottom="@id/tvCategory"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:text="105" />
+            android:layout_toEndOf="@id/tvNo"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:layout_toRightOf="@id/tvNo"
+            android:text="বিতর বিতর বিতর বিতর বিতর বিতর" />
 
     </RelativeLayout>
 
